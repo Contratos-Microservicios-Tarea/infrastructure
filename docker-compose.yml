@@ -14,7 +14,7 @@ services:
       - "5432:5432"
 
   licencias:
-    build: ./licencias
+    build: ../Licenses-Service
     container_name: licencias_service
     environment:
       DB_HOST: db
@@ -28,7 +28,7 @@ services:
       - db
 
   portal-paciente:
-    build: ./portal-paciente
+    build: ../Patient-Service
     container_name: portal_service
     environment:
       LICENSES_URL: http://licencias:8000
@@ -38,7 +38,7 @@ services:
       - licencias
 
   validador-aseguradora:
-    build: ./validador-aseguradora
+    build: ./Insurance-Service
     container_name: validador_service
     environment:
       LICENSES_URL: http://licencias:8000
