@@ -23,7 +23,7 @@ services:
       DB_PASSWORD: password
       DB_NAME: health
     ports:
-      - "8001:8000"
+      - "8081:8081"
     depends_on:
       - db
 
@@ -31,9 +31,9 @@ services:
     build: ../Patient-Service
     container_name: portal_service
     environment:
-      LICENSES_URL: http://licencias:8000
+      LICENSES_URL: http://licencias:8081
     ports:
-      - "8002:8000"
+      - "8082:8082"
     depends_on:
       - licencias
 
@@ -41,8 +41,8 @@ services:
     build: ../Insurance-Service
     container_name: validador_service
     environment:
-      LICENSES_URL: http://licencias:8000
+      LICENSES_URL: http://licencias:8081
     ports:
-      - "8003:8000"
+      - "808 3:8080"
     depends_on:
       - licencias
