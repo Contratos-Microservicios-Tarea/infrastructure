@@ -38,7 +38,7 @@ services:
       - licencias
 
   validador-aseguradora:
-    build: ./Insurance-Service
+    build: ../Insurance-Service
     container_name: validador_service
     environment:
       LICENSES_URL: http://licencias:8000
