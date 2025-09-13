@@ -1,0 +1,48 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: health
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+
+  licencias:
+    build: ./licencias
+    container_name: licencias_service
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: health
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db
+
+  portal-paciente:
+    build: ./portal-paciente
+    container_name: portal_service
+    environment:
+      LICENSES_URL: http://licencias:8000
+    ports:
+      - "8002:8000"
+    depends_on:
+      - licencias
+
+  validador-aseguradora:
+    build: ./validador-aseguradora
+    container_name: validador_service
+    environment:
+      LICENSES_URL: http://licencias:8000
+    ports:
+      - "8003:8000"
+    depends_on:
+      - licencias
