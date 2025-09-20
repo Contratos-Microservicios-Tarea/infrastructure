@@ -43,6 +43,6 @@ services:
     environment:
       LICENSES_URL: http://licencias:8081
     ports:
-      - "808 3:8080"
+      - "8083:8080"
     depends_on:
       - licencias
