@@ -37,7 +37,6 @@ services:
     depends_on:
       - db
 
-
   portal-paciente:
     build: ../Patient-Service
     container_name: portal_service
