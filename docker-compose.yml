@@ -14,6 +14,7 @@ services:
   licencias:
     build: ../Licenses-Service
     container_name: licencias_service
+    restart: on-failure
     environment:
           POSTGRES_HOST: db
           POSTGRES_PORT: 5432
