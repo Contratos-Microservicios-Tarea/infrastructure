@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:15
@@ -17,15 +15,28 @@ services:
     build: ../Licenses-Service
     container_name: licencias_service
     environment:
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_USER: user
-      DB_PASSWORD: password
-      DB_NAME: health
+          POSTGRES_HOST: db
+          POSTGRES_PORT: 5432
+          POSTGRES_USERNAME: user
+          POSTGRES_PASSWORD: password
+          POSTGRES_NAME: health
+          POSTGRES_SSLMODE: disable
+          POSTGRES_TIMEZONE: America/Santiago
+          POSTGRES_URL: postgres://user:password@db:5432/health?sslmode=disable
+          PORT: 8081
+          HOST: 0.0.0.0
+          DB_MAX_IDLE_CONNS: 10
+          DB_MAX_OPEN_CONNS: 100
+          DB_CONN_MAX_LIFETIME: 3600
+          APP_ENV: development
+          LOG_LEVEL: info
+          GORM_LOG_LEVEL: info
+          GORM_SLOW_THRESHOLD: 200
     ports:
       - "8081:8081"
     depends_on:
       - db
+
 
   portal-paciente:
     build: ../Patient-Service
@@ -43,6 +54,6 @@ services:
     environment:
       LICENSES_URL: http://licencias:8081
     ports:
-      - "808 3:8080"
+      - "8083:8080"
     depends_on:
       - licencias
