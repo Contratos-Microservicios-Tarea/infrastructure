@@ -50,7 +50,7 @@ services:
 
   validador-aseguradora:
     build: ../Insurance-Service
-    container_name: validador_service
+    container_name: aseguradora_service
     environment:
       LICENSES_URL: http://licencias:8081
     ports:
