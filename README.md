@@ -10,7 +10,7 @@
 ## 🚀 ¿Qué incluye?
 
 - **Base de datos unificada** (PostgreSQL)
-- **Servicios:** Licencias, Portal Paciente y Validador Aseguradora
+- **Servicios:** Licencias, Portal Paciente, Validador Aseguradora y Médico App
 - **Red interna** para comunicación entre servicios
 
 ---
@@ -30,7 +30,8 @@ workspace/
 ├─ infra/                    # este repositorio
 ├─ Licenses-Service/
 ├─ Pacient-Service/
-└─ Insurance-Service/
+├─ Insurance-Service/
+└─ Medico-App/
 ```
 
 >[!NOTE]
@@ -53,6 +54,7 @@ git clone https://github.com/Contratos-Microservicios-Tarea/infrastructure.git
 git clone https://github.com/Contratos-Microservicios-Tarea/Licenses-Service.git
 git clone https://github.com/Contratos-Microservicios-Tarea/Patient-Service.git
 git clone https://github.com/Contratos-Microservicios-Tarea/Insurance-Service.git
+git clone https://github.com/Contratos-Microservicios-Tarea/Medico-App.git
 ```
 
 ---
@@ -82,11 +84,12 @@ git clone https://github.com/Contratos-Microservicios-Tarea/Insurance-Service.gi
 
 | Servicio               | URL                       |
 |------------------------|---------------------------|
-| Licencias              | http://localhost:8001     |
-| Portal Paciente        | http://localhost:8002     |
-| Validador Aseguradora  | http://localhost:8003     |
+| Licencias              | http://localhost:8081     |
+| Portal Paciente        | http://localhost:8082     |
+| Validador Aseguradora  | http://localhost:8083     |
+| Médico App             | http://localhost:8084     |
 
-> Los servicios se comunican entre sí usando la red interna de Docker Compose. Ejemplo: Portal y Validador llaman a Licencias con `http://licencias:8000`.
+> Los servicios se comunican entre sí usando la red interna de Docker Compose. Ejemplo: Portal y Validador llaman a Licencias con `http://licencias:8081`.
 
 ---
 
