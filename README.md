@@ -78,7 +78,7 @@ git clone https://github.com/Contratos-Microservicios-Tarea/Medico-App.git
    docker-compose ps
    ```
 
-
+> **Nota:** Al levantar el entorno con Docker Compose, los tests de todos los servicios se ejecutan automáticamente como parte del proceso de construcción y despliegue.
 
 ## 🌐 URLs de acceso
 
